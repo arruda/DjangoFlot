@@ -1,23 +1,34 @@
 
     
-<div id="placeholder" style="width:600px;height:300px"></div>
+<div id="placeholder" style="width:{{width}}px;height:{{height}}px"></div>
     
 <script language="javascript" type="text/javascript" src="/media/js/jquery-1.5.1.js"></script>
 <script language="javascript" type="text/javascript" src="/media/js/flot/jquery.flot.js"></script>
     
 <script id="source" language="javascript" type="text/javascript">
-$(function () {
-    var d1 = [];
-    {% for x, y in data %}
-        d1.push([{{x}}, {{y}}]);
-    {% endfor %}    
 
-                        
-    $.plot($("#placeholder"), [
-        {
-            data: d1,
-            lines: { show: true, fill: true }
-        }
-    ]);
-});
+
+    $j(function () {
+
+                                               
+                                                   
+            var datasets = [];
+            <c:if test="{% if datasets %}">
+                datasets = {{datasets}};
+            </c:if> 
+
+                                               
+
+                                                       
+                                                                                               
+                                               
+                                                                       
+            $j.plot(jQuery("#placeholder"), datasets,
+                {
+                    yaxis: { min: 0 },
+                    xaxis: { min: 0 },
+                    series : {bars: {% if barWidth %} barWidth: {{barWidth}} {% endif %} }
+                }
+            );
+    });
 </script>
