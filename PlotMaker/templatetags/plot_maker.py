@@ -1,12 +1,23 @@
 from django import template
-
-#using this to get the FLOT_JS_MEDIA from settings.
-#from django.conf import settings
+from DjangoFlot.PlotMaker.plot import PlotData, printSinglePlotData, printMultiplesPlotDatas
 
 register = template.Library()
 
 
 @register.inclusion_tag('PlotMaker/tags/plotMakerTag.html')
-def plotMaker(data):
-    return {'data': data}
+def plotMaker(plotData,placeholder="placeholder",width="600",height="300"):    
+    dataString = printSinglePlotData(plotData)                      
+        
+    
+                
+    return {'datasets': dataString,'placeholder':placeholder,'width':width,'height':height,'plotData':plotData}
+
+
+@register.inclusion_tag('PlotMaker/tags/plotMakerTag.html')
+def multiplePlotsMaker(plotDatas,placeholder="placeholder",width="600",height="300"):  
+
+    dataString = printMultiplesPlotDatas(plotDatas)               
+        
+                
+    return {'datasets': dataString,'placeholder':placeholder,'width':width,'height':height}
 

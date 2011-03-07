@@ -12,7 +12,7 @@ urlpatterns = patterns('',
 
     (r'^admin/', include(admin.site.urls)),
     #(r'^$', direct_to_template, {'template':'index.html','dados':dados}),
-    (r'^$', 'DjangoFlot.PlotMaker.views.plot'),
+    (r'^$', 'DjangoFlot.PlotMaker.views.teste'),
     #(r'^$', 'DjangoFlot.PlotMaker.views.teste'),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )

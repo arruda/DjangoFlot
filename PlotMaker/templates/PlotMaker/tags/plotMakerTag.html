@@ -1,33 +1,38 @@
 
     
-<div id="placeholder" style="width:{{width}}px;height:{{height}}px"></div>
+<div id="{{placeholder}}" style="width:{{width}}px;height:{{height}}px"></div>
     
 <script language="javascript" type="text/javascript" src="/media/js/jquery-1.5.1.js"></script>
 <script language="javascript" type="text/javascript" src="/media/js/flot/jquery.flot.js"></script>
     
 <script id="source" language="javascript" type="text/javascript">
-
-
+ 
+    var $j = jQuery.noConflict();
     $j(function () {
 
                                                
                                                    
             var datasets = [];
            {% if datasets %}
-                datasets = {{datasets}};
+                datasets = {{datasets|safe}};
            {% endif %}
                                                
-
-                                                       
+           
                                                                                                
                                                
                                                                        
-            $j.plot(jQuery("#placeholder"), datasets,
+            $j.plot(jQuery("#{{placeholder}}"), datasets ,
                 {
                     yaxis: { min: 0 },
                     xaxis: { min: 0 },
-                    series : {bars: {% if barWidth %} barWidth: {{barWidth}} {% endif %} }
+                    
                 }
             );
     });
+    
 </script>
+    a
+    {{plotData.xAxis}}
+    b
+    {{plotData.yAxis}}
+    c
