@@ -13,3 +13,7 @@ def plot(request):
         infos += [ [md3.xAxys , md3.yAxys] ]
     
     return render_to_response('index.html', {'infos':infos})
+    
+    
+def teste(request):    
+    return render_to_response('PlotMaker/index.html')

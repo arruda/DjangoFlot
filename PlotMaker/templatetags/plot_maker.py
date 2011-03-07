@@ -6,7 +6,7 @@ from django import template
 register = template.Library()
 
 
-@register.inclusion_tag('tags/plotMakerTag.html')
+@register.inclusion_tag('PlotMaker/tags/plotMakerTag.html')
 def plotMaker(data):
     return {'data': data}
 

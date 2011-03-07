@@ -88,7 +88,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'DjangoFlot.urls'
 
 TEMPLATE_DIRS = (
-    LOCAL('media/templates/'),
+    LOCAL('templates/'),
 )
 
 INSTALLED_APPS = (
