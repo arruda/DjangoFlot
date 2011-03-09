@@ -20,6 +20,7 @@ def teste(request):
     listModels3 = Model3.objects.all()
         
     p1 = PlotData(xAxis = [], yAxis= [], label="Plot 1")    
+    p1.plotType = "bars"
     p2 = PlotData(xAxis = [], yAxis= [], label="Plot 2")  
     for md3 in listModels3:    
         p1.xAxis += [md3.xAxys]
