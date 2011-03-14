@@ -9,28 +9,82 @@
 <script id="source" language="javascript" type="text/javascript">
  
     var $j = jQuery.noConflict();
-    $j(function () {
+			 var $j = jQuery.noConflict();
+				
+			 $j(function () {
 
-                                               
-                                                   
-            var datasets = [];
-           {% if datasets %}
-                datasets = {{datasets|safe}};
-           {% endif %}
-                                               
-           
-                                                                                               
-                                               
-                                                                       
-            $j.plot(jQuery("#{{placeholder}}"), datasets ,
-                {
-                    yaxis: { min: 0 },
-                    xaxis: { min: 0 },
-                    
-                }
-            );
-    });
-    
+			     			
+			     			
+							var datasets = {};
+							{%if datasets %}datasets = {{datasets}};{% endif %}
+							 
+
+							
+
+					        var data = [];
+
+					        $j.each(datasets, function(key) {
+										data.push(datasets[key]);
+							});
+												
+						
+						                        
+							$j.plot($j("{{placeholder}}"), data,{
+								xaxis: {
+								
+							            {%if xAxisLabel %}
+											axisLabel: '{{xAxisLabel}}',
+											axisLabelUseCanvas: true,
+											
+											 {%if xAxisFontSize %}
+												axisLabelFontSizePixels: {{xAxisFontSize}},
+							                 {% endif %}
+							                 
+											 {%if xAxisFontFamily %}
+												axisLabelFontFamily: '{{xAxisFontFamily}}',
+							                 {% endif %}
+							                 
+											 {%if xAxisCentralize %}
+												centralize: {{xAxisCentralize}},
+							                 {% endif %}
+							                 
+							            {% endif %}
+				                		 min: 0 , 
+										},
+				                yaxis: {
+							            {%if yAxisLabel %}
+											axisLabel: '{{yAxisLabel}}',
+											axisLabelUseCanvas: true,
+											
+											 {%if yAxisFontSize %}
+												axisLabelFontSizePixels: {{yAxisFontSize}},
+							                 {% endif %}
+							                 
+											 {%if yAxisFontFamily %}
+												axisLabelFontFamily: '{{yAxisFontFamily}}',
+							                 {% endif %}
+							                 
+											 {%if yAxisCentralize %}
+												centralize: {{yAxisCentralize}},
+							                 {% endif %}
+							                 
+							            {% endif %}
+		                		 	min: 0 , 
+								},
+				                series : {
+					                bars: {
+					                
+											 {%if barWidth %}
+												barWidth: {{barWidth}},
+							                 {% endif %}
+					                	}
+				                },
+				                 grid: {
+				                	backgroundColor: { colors: ["#FFF", "#FFF"] }
+				                }         
+				            });
+				            
+						});
 </script>
     a
     {{plotData.xAxis}}
